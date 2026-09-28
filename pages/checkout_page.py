@@ -13,7 +13,6 @@ class CheckoutPage(BasePage):
         self.error_message = (By.CSS_SELECTOR, ".error-message-container")
 
     def fill_checkout_info(self, fname, lname, zip_code):
-        # ✅ Wait for fields before typing
         self.type(self.first_name, fname)
         self.type(self.last_name, lname)
         self.type(self.zip_code, zip_code)

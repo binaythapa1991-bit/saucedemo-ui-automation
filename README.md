@@ -11,6 +11,54 @@ The suite covers:
 - Cart navigation and logout
 
 ---
+## 🚀 Continuous Integration (CI)
+
+This project can be integrated into a CI pipeline so tests run automatically on every push or pull request.
+
+### 🔹 GitHub Actions Example
+Place the following file at `.github/workflows/ui-tests.yml`:
+
+```yaml
+name: UI Tests
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+
+      - name: Install Chrome
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y google-chrome-stable
+
+      - name: Run tests (headless)
+        run: |
+          pytest tests/ --html=report.html --self-contained-html
+
+      - name: Upload HTML report
+        uses: actions/upload-artifact@v4
+        with:
+          name: pytest-report
+          path: report.html
 
 ## Project Structure
 saucedemo-ui-automation/
