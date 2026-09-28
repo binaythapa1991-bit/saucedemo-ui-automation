@@ -24,20 +24,13 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r requirements.txt
 
-      - name: Install Chrome and ChromeDriver
+      - name: Install Chrome
         run: |
           sudo apt-get update
-          sudo apt-get install -y wget unzip xvfb
-          wget https://dl.google.com/linux/direct/google-chrome-stable_current_amd64.deb
-          sudo apt install -y ./google-chrome-stable_current_amd64.deb
-          CHROME_VERSION=$(google-chrome --version | awk '{print $3}')
-          wget -O /tmp/chromedriver.zip "https://chromedriver.storage.googleapis.com/${CHROME_VERSION}/chromedriver_linux64.zip" || true
-          unzip /tmp/chromedriver.zip -d /usr/local/bin || true
+          sudo apt-get install -y google-chrome-stable
 
       - name: Run tests (headless)
         run: |
-          export DISPLAY=:99
-          Xvfb :99 -ac &
           pytest tests/ --html=report.html --self-contained-html
 
       - name: Upload HTML report
