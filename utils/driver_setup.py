@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 def get_driver():
     options = Options()
 
-    # Detect if running in CI (GitHub Actions sets CI=true)
+    # Headless only in CI
     if os.getenv("CI"):
         options.add_argument("--headless=new")
         options.add_argument("--no-sandbox")
@@ -13,13 +13,21 @@ def get_driver():
     else:
         options.add_argument("--start-maximized")
 
-    # Disable password save prompt
+    # Use a temporary profile so Chrome has no saved credentials
+    options.add_argument("--user-data-dir=/tmp/chrome-profile")
+    options.add_argument("--disable-features=PasswordManagerOnboarding,PasswordCheck,SafeBrowsingEnhancedProtection")
+    options.add_argument("--disable-save-password-bubble")
+    options.add_argument("--disable-popup-blocking")
+    options.add_argument("--disable-notifications")
+
     prefs = {
         "credentials_enable_service": False,
-        "profile.password_manager_enabled": False
+        "profile.password_manager_enabled": False,
+        "profile.default_content_setting_values.notifications": 2
     }
     options.add_experimental_option("prefs", prefs)
 
     driver = webdriver.Chrome(options=options)
     driver.get("https://www.saucedemo.com/")
+
     return driver
