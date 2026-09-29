@@ -35,8 +35,3 @@ def get_driver():
     driver.get("https://www.saucedemo.com/")
     return driver
 
-@pytest.fixture
-def driver():
-    drv = get_driver()
-    yield drv
-    drv.quit()
