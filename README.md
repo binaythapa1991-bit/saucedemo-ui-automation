@@ -10,6 +10,13 @@ The suite covers:
 - Checkout flows (success, missing info)
 - Cart navigation and logout
 
+## ⚙️ Configuration Files
+
+- `requirements.txt` → Lists Python dependencies (pytest, selenium, etc.)
+- `.github/workflows/ui-tests.yml` → GitHub Actions workflow for CI/CD pipeline
+- `conftest.py` → Shared pytest fixtures (driver setup)
+- `.gitignore` → Git ignore rules (e.g., `__pycache__`, reports, temporary files)
+- `utils/driver_setup.py` → Selenium WebDriver configuration (Chrome options, headless mode)
 ---
 ## 🚀 Continuous Integration (CI)
 
