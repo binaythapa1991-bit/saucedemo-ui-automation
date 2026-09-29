@@ -34,8 +34,6 @@ def test_checkout_missing_info(driver):
     cart = CartPage(driver)
     cart.proceed_to_checkout()
     checkout = CheckoutPage(driver)
-
-    # Click continue without filling fields
     checkout.click(checkout.continue_button)
 
     error = checkout.get_error_message()

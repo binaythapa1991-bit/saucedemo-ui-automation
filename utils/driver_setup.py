@@ -14,7 +14,7 @@ def get_driver():
     else:
         options.add_argument("--start-maximized")
 
-    # Launch Chrome in incognito with a clean profile
+    # Launch Chrome in incognito
     options.add_argument("--incognito")
     options.add_argument("--user-data-dir=/tmp/chrome-profile")
 

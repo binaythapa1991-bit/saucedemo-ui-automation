@@ -15,8 +15,8 @@ The suite covers:
 
 This project can be integrated into a CI pipeline so tests run automatically on every push or pull request.
 
-### 🔹 GitHub Actions Example
-Place the following file at `.github/workflows/ui-tests.yml`:
+### 🔹 GitHub Actions
+`.github/workflows/ui-tests.yml`:
 
 ```yaml
 name: UI Tests
@@ -115,14 +115,14 @@ Cart: navigation to checkout, remove item
 
 Logout: return to login page
 
-Notes
+Notes-
 Tests use the Page Object Model for maintainability.
 
 The conftest.py file provides a shared driver fixture for all tests.
 
 Assertions are case‑insensitive to match SauceDemo’s UI messages.
 
-Timeout handling ensures elements are visible before interaction.
+Timeout handling to ensure elements are visible before interaction.
 
 
 
