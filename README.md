@@ -95,7 +95,7 @@ Code
 ## ⚙️ Setup Instructions
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-username>/saucedemo-ui-automation.git
+    git clone https://github.com/binaythapa1991-bit/saucedemo-ui-automation.git
    cd saucedemo-ui-automation
 
 Install dependencies:
